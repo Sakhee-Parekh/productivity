@@ -6,10 +6,17 @@ function heroBase(userName, health, attack, armor) {
 }
 
 var hero = new heroBase(
+<<<<<<< HEAD
     'Hero', // name 
     '20', // the characters health
     '7',  // the characters attack 
     '2',  // the characters armor (adds 3/4 of its value to its health)
+=======
+    'Hero',
+    '20',
+    '7', 
+    '2', 
+>>>>>>> 7d512c41866d718b6a674f9b4195c371dd3b2e18
 ); 
 
 function villainBase(userName, health, attack, armor) { 
@@ -19,7 +26,10 @@ function villainBase(userName, health, attack, armor) {
     this.armor = armor; 
 }
 
+<<<<<<< HEAD
 //
+=======
+>>>>>>> 7d512c41866d718b6a674f9b4195c371dd3b2e18
 var water = new villainBase(
 	'Water',
 	'20',
