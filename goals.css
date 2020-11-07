@@ -1,0 +1,50 @@
+html,body{
+    background-color: #283D3B;
+    background-image:;
+    font-family: 'Abril Fatface', cursive;
+    overflow-x: hidden !important;
+    margin: 0px !important;
+    padding: 0px !important;
+    scroll-padding-top: 50px;
+    scroll-behavior: smooth;
+}
+
+*{
+    text-decoration: none !important;
+}
+
+
+form{
+    margin-top: 100px;
+    font-size: 100px;
+    color: #EDDDD4;
+    text-align: center;
+    
+}
+
+button{
+    border: none;
+    color: #EDDDD4;
+    padding: 10px 32px;
+    border-radius: 15px 15px 15px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    background-color: #C44536;
+}
+
+input[type=text] {
+    transition: width 0.4s ease-in-out;
+}
+  
+input[type=text]:focus {
+    width: 30%;
+}
+
+input{
+    border: none;
+    border-radius: 15px 15px 15px 15px;
+    padding: 25px 25px;
+    width: 10%;
+}
