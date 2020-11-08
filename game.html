@@ -1,19 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>One Day</title>
     <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono:ital@0;1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css"><link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css">
-    <link rel="stylesheet" href="styles.css"/>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css">
+    <link rel="stylesheet" href="game.css" />
 </head>
 
 <body>
+    <h1>Battle it Out!</h1>
+    <div class="section" id="heroBase">
+        <div id="message"></div>
+        <div id="vill-img">
+        </div>
+    </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
-<script type="text/javascript" src="./code.js"></script>
+    <div class="game">
+        <div id="battle-area">
+            <div class="text">
+                <div id="hero-name"></div>
+                <div id="hero-stats"></div>
+                <div id="hero-health"></div>
+                <div id="enemy-attack"></div>
+                <div id="enemy-armor"></div>
+
+                <div id="enemy-name"></div>
+                <div id="enemy-stats"></div>
+                <div id="enemy-health"></div>
+                <div id="enemy-attack"></div>
+                <div id="enemy-armor"></div>
+            </div>
+        </div>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+        <script type="text/javascript" src="./game.js"></script>
 </body>
+
 </html>
