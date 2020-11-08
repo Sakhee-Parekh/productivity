@@ -1,10 +1,9 @@
 html,body{
-    background-color: #283D3B !important;
+    background-color: #283D3B;
     font-family: 'Abril Fatface', cursive;
     overflow-x: hidden !important;
     margin: 0px !important;
     padding: 0px !important;
-    scroll-padding-top: 50px;
     scroll-behavior: smooth;
 }
 
@@ -22,7 +21,8 @@ html,body{
 .sliding-background {
     background-image: url(./images/cutiehack.png);
     animation: slide 5s linear infinite;
-    background-size: cover !important;
+    background-size: 100%;
+    background-repeat: repeat-y;
     min-height: 100vh;
     margin: 0px !important;
     position: relative;
@@ -47,7 +47,7 @@ html,body{
 }
 
 form{
-    margin-top: 100px;
+    margin-top: 60px;
     font-size: 100px;
     color: #EDDDD4;
     text-align: center;
@@ -102,4 +102,17 @@ input{
     color: #EDDDD4;
     font-size: 30px;
     align-items: center;
+}
+
+.endButton{
+    text-align: center;
+    margin-bottom: 50px;
+    z-index: 100;
+}
+
+.done{
+    margin-top: 300px;
+    align-items: center;
+    color: #EDDDD4;
+    font-size: 20px;
 }

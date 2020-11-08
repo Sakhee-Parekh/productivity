@@ -7,9 +7,10 @@
         <title>One Day</title>
         <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="goals.css" />
+        <script type="text/javascript" src="./code.js"></script>
     </head>
 
-    <body>
+    <body onload="readStorage();">
 
         <div class="wrapper">
             <div class="sliding-background">
@@ -21,18 +22,27 @@
                             <label for="name">SET YOUR GOALS</label>
                             <br>
                             <input type="text" name="goal" id="goal" required='false'/>
-                            <button name="set" id="set" onclick="updateButtonText(); return false;">set</button>
-                            <button name="clear" id="clear" onclick="clear(); return false;">clear</button>
+                            <button name="set" id="set" onclick="updateText(); return false;">set</button>
+                            <button name="clear" id="clear" onclick="clearText(); clear(); return false;">clear</button>
                     </form>
                 </div>
+                <br>
+                <br>
+                <br>
                 <div class="enterGoal">
                     <p>
                         <span id="txtName"></span>
                     </p>
                 </div>
+                <div class="endButton">
+                    <a href="game.html"><button class="done">Goals Completed for Today</button></a>
+                </div>
             </div>
         </div>
          
-        <script type="text/javascript" src="./code.js"></script>
     </body>
 </html>
+
+
+
+
