@@ -1,49 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>One Day</title>
-        <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="goals.css" />
-        <script type="text/javascript" src="./code.js"></script>
-    </head>
+<html>
 
-    <body onload="readStorage();">
+<head lang="en">
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
+    <link rel="stylesheet" href="goals.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="game.js"></script>
+</head>
 
-        <div class="wrapper">
-            <div class="sliding-background">
-                <!-- <img src="./images/cutiehack.png" alt="clouds"> -->
-            </div>
-            <div class="bg">
-                <div class="form">
-                    <form action="#" method="GET" enctype="multipart/form-data">
-                            <label for="name">SET YOUR GOALS</label>
-                            <br>
-                            <input type="text" name="goal" id="goal" required="false"/>
-                            <button name="set" id="set" onclick="updateText(); return false;">set</button>
-                            <button name="clear" id="clear" onclick="clearText(); clear(); return false;">clear</button>
-                    </form>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3 centered">
+
+
+                <div class="section" id="show-characters">
+                    <div id="message"></div>
+                    <div id="character-portraits">
+                    </div>
                 </div>
-                <br>
-                <br>
-                <br>
-                <a href="goals.html"><img class ="next" src="./images/Asset 2.png" alt="arrow"></a>
-                <div class="enterGoal">
-                    <p>
-                        <span id="txtName"></span>
-                    </p>
+
+                <div class="section arena-area">
+                    <div id="arena">
+                        <div class="arena-text">
+                            <div id="hero-name"></div>
+                            <div id="hero-stats"></div>
+                            <div id="hero-hp"></div>
+
+                            <div id="enemy-name"></div>
+                            <div id="enemy-stats"></div>
+                            <div id="enemy-hp"></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="endButton">
-                    <a href="game.html"><button class="done">Goals Completed for Today</button></a>
-                </div>
+
+
             </div>
         </div>
-    <script type="text/javascript" src="./code.js"></script>
-    </body>
+    </div>
+
+</body>
+
 </html>
-
-
-
-

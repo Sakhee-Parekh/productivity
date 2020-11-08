@@ -1,126 +1,137 @@
-html,body{
-    background-color: #283D3B;
-    font-family: 'Abril Fatface', cursive;
-    overflow-x: hidden !important;
-    margin: 0px !important;
-    padding: 0px !important;
-    scroll-behavior: smooth;
-}
-
-*{
-    text-decoration: none !important;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-.wrapper{
-    overflow: hidden;
-}
-
-.sliding-background {
-    background-image: url(./images/cutiehack.png);
-    animation: slide 5s linear infinite;
-    background-size: 100%;
-    background-repeat: repeat-y;
-    min-height: 100vh;
-    margin: 0px !important;
-    position: relative;
-}
-
-@keyframes slide {
-    0%{
-      transform: translate3d(0, 0, 0);
-    }
-    25%{
-        transform: translate3d(-15px, 0, 0);
-    }
-    50%{
-        transform: translate3d(-55px, 0, 0);
-    }
-    85%{
-        transform: translate3d(-105px, 0, 0);
-    }
-    100%{
-      transform: translate3d(-155px, 0, 0);
-    }
-}
-
-form{
-    margin-top: 60px;
-    font-size: 100px;
-    color: #EDDDD4;
-    text-align: center;
-    z-index: 100;
-}
-
-.bg{
-    position: fixed;
-    top: 100px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.next{
-    top:1000px;
-    width: 3%;
-    float: right;
-    padding-left: 200px;
+body {
+	padding: 10px;
+	font-family: 'EB Garamond', serif;
+	color: #06536d;
 }
 
 
-button{
-    border: none;
-    color: #EDDDD4;
-    padding: 10px 32px;
-    border-radius: 15px 15px 15px 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    background-color: #C44536;
-    z-index: 100;
-    font-size: 20px;
-
+.row {
+	text-align: center;
 }
 
-input[type=text] {
-    transition: width 0.4s ease-in-out;
-}
-  
-input[type=text]:focus {
-    width: 35%;
+.character {
+	display: inline;
 }
 
-input{
-    border: none;
-    border-radius: 15px 15px 15px 15px;
-    padding: 15px 25px;
-    width: 20%;
-    z-index: 100;
-    color: #C44536;
-
+#character-portraits {
+	min-height: 106px;
 }
 
-.enterGoal{
+h1 {
+	font-size: 24px;
+	padding: 10px 0;
+}
+
+h2 {
+	font-size: 20px;
+	padding: 5px 0;
+}
+
+.red {
+	color: red;
+}
+
+.green {
+	color: green;
+}
+
+
+.btn {
+	margin: 5px;
+	text-transform: uppercase;
+	font-size: 8px;
+	font-family: Pixel;
+}
+
+#arena {
+	position: relative;
+	height: 320px;
+	width: 480px;
+	background: url('../images copy/battle/background.gif') no-repeat;
+	background-size: cover;
+	margin: 0 auto;
+}
+
+.arena-text {
+
+	z-index: 3;
+	color: #fff;
+    font-size: 18px;
+    text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
+}
+
+#hero-name {
+    position: absolute;
+    top: 20px;
+    left: 374px;
+    width: 108px;
     text-align: center;
 }
 
-#txtName{
-    color: #EDDDD4;
-    font-size: 30px;
-    align-items: center;
+#hero-stats {
+    position: absolute;
+    font-size: 15px;
+    top: 225px;
+    left: 400px;
+    width: 79px;
+    text-align: right;
 }
 
-.endButton{
+#hero-hp {
+    position: absolute;
+    top: 286px;
+    left: 245px;
+    width: 230px;
     text-align: center;
-    margin-bottom: 50px;
-    z-index: 100;
 }
 
-.done{
-    margin-top: 300px;
-    align-items: center;
-    color: #EDDDD4;
-    font-size: 20px;
+#enemy-name {
+    position: absolute;
+    top: 20px;
+    left: 2px;
+    width: 108px;
+    text-align: center;
+}
+
+#enemy-stats {
+    position: absolute;
+    font-size: 15px;
+    top: 225px;
+    left: 0;
+    width: 79px;
+    text-align: right;
+}
+
+#enemy-hp {
+    position: absolute;
+    top: 286px;
+    left: 5px;
+    width: 230px;
+    text-align: center;
+}
+
+#hero {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	height: 320px;
+	width: 480px;
+}
+
+#enemy {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 320px;
+	width: 480px;
+	z-index: 1;
+}
+
+.attacker {
+	z-index: 2!important;
+}
+
+.defender {
+	z-index: 1!important;
 }
