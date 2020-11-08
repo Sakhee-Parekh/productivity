@@ -10,19 +10,27 @@
     </head>
 
     <body>
-        <div class="form">
-            <form action="#" method="GET" enctype="multipart/form-data">
-                    <label for="name">SET YOUR GOALS</label>
-                    <br>
-                    <input type="text" name="goal" id="goal" required='false'/>
-                    <button name="set" id="set" onclick="updateButtonText(); return false;">set</button>
-            </form>
-        </div>
 
-        <div class="enterGoal">
-            <p>
-                <span id="txtName"></span>
-            </p>
+        <div class="wrapper">
+            <div class="sliding-background">
+                <!-- <img src="./images/cutiehack.png" alt="clouds"> -->
+            </div>
+            <div class="bg">
+                <div class="form">
+                    <form action="#" method="GET" enctype="multipart/form-data">
+                            <label for="name">SET YOUR GOALS</label>
+                            <br>
+                            <input type="text" name="goal" id="goal" required='false'/>
+                            <button name="set" id="set" onclick="updateButtonText(); return false;">set</button>
+                            <button name="clear" id="clear" onclick="clear(); return false;">clear</button>
+                    </form>
+                </div>
+                <div class="enterGoal">
+                    <p>
+                        <span id="txtName"></span>
+                    </p>
+                </div>
+            </div>
         </div>
          
         <script type="text/javascript" src="./code.js"></script>
