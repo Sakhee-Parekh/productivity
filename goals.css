@@ -61,6 +61,14 @@ form{
     transform: translateX(-50%);
 }
 
+.next{
+    top:1000px;
+    width: 3%;
+    float: right;
+    padding-left: 200px;
+}
+
+
 button{
     border: none;
     color: #EDDDD4;

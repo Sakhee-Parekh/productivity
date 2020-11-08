@@ -1,0 +1,48 @@
+html,body{
+    background-color: #283D3B;
+    font-family: 'Abril Fatface', cursive;
+    overflow-x: hidden !important;
+    margin: 0px !important;
+    padding: 0px !important;
+    scroll-behavior: smooth;
+}
+
+*{
+    text-decoration: none !important;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+h1{
+    margin-top: 100px;
+    font-size: 150px;
+    color: #EDDDD4;
+    text-align: center;
+}
+
+h4{
+    font-family: 'Dosis', sans-serif;
+    font-weight: 200;
+    margin-top: 10px;
+    font-size: 30px;
+    color: #EDDDD4;
+    text-align: center;
+}
+
+.next{
+    top:1000px;
+    width: 3%;
+    float: right;
+    margin-right: 30px;
+}
+
+.wrapper{
+    text-align: center;
+}
+
+.knight{
+    width: 15%;
+    align-items: center;
+}
