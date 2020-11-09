@@ -61,13 +61,6 @@ form{
     transform: translateX(-50%);
 }
 
-.next{
-    margin-left: 30px;
-    width: 3%;
-    float: left;
-}
-
-
 button{
     border: none;
     color: #EDDDD4;
@@ -123,3 +116,11 @@ input{
     color: #EDDDD4;
     font-size: 20px;
 }
+
+.next{
+    width: 4%;
+    margin-bottom:600px !important;
+    float: right;
+    margin-left: 1700px;
+}
+

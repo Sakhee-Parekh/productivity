@@ -1,13 +1,13 @@
 body{
     padding: 10px;
-    background: url('../images/dungeon.jpg');
 }
 
 
 h1 {
 	font-size: 24px;
     padding: 10px 0;
-    color: white;
+    color: black;
+    text-align: center;
 }
 
 #hero-name {
@@ -76,7 +76,6 @@ h1 {
     text-align: center;
 }
 
-
 #enemy-attack {
     position: absolute;
     top: 286px;
@@ -90,4 +89,140 @@ h1 {
     left: 5px;
     width: 230px;
     text-align: center;
+}
+body {
+	padding: 10px;
+	font-family: 'EB Garamond', serif;
+	color: #06536d;
+}
+
+.row {
+	text-align: center;
+}
+
+.character {
+	display: inline;
+}
+
+#character-portraits {
+	min-height: 106px;
+}
+
+h1 {
+	font-size: 24px;
+	padding: 10px 0;
+}
+
+h2 {
+	font-size: 20px;
+	padding: 5px 0;
+}
+
+.red {
+	color: red;
+}
+
+.green {
+	color: green;
+}
+
+
+.btn {
+	margin: 5px;
+	text-transform: uppercase;
+	font-size: 8px;
+	font-family: Pixel;
+}
+
+#arena {
+	position: relative;
+	height: 320px;
+	width: 480px;
+	background-image: url('../images copy/battle/background.gif') no-repeat !important;
+	background-size: cover;
+	margin: 0 auto;
+}
+
+.arena-text {
+
+	z-index: 3;
+	color: black;
+    font-size: 18px;
+    text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
+}
+
+#hero-name {
+    position: absolute;
+    top: 20px;
+    left: 374px;
+    width: 108px;
+    text-align: center;
+}
+
+#hero-stats {
+    position: absolute;
+    font-size: 15px;
+    top: 225px;
+    left: 400px;
+    width: 79px;
+    text-align: right;
+}
+
+#hero-hp {
+    position: absolute;
+    top: 286px;
+    left: 245px;
+    width: 230px;
+    text-align: center;
+}
+
+#enemy-name {
+    position: absolute;
+    top: 20px;
+    left: 2px;
+    width: 108px;
+    text-align: center;
+}
+
+#enemy-stats {
+    position: absolute;
+    font-size: 15px;
+    top: 225px;
+    left: 0;
+    width: 79px;
+    text-align: right;
+}
+
+#enemy-hp {
+    position: absolute;
+    top: 286px;
+    left: 5px;
+    width: 230px;
+    text-align: center;
+}
+
+#hero {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	height: 320px;
+	width: 480px;
+}
+
+#enemy {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 320px;
+	width: 480px;
+	z-index: 1;
+}
+
+.attacker {
+	z-index: 2!important;
+}
+
+.defender {
+	z-index: 1!important;
 }
