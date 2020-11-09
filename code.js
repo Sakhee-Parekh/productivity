@@ -6,10 +6,8 @@ function readStorage() {
 
 
 function updateText() {
-    // var goals  = [];
     let current = document.getElementById('goal').value; 
     let prev = document.getElementById('txtName').innerHTML; 
-    // goals.push(txtname);
     let final; 
     if (prev.length == 0) { 
         final = current; 
