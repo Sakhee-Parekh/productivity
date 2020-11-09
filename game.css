@@ -18,16 +18,18 @@ body {
 
 h1{
     text-align: center;
-    font-size: 30px;
-    font-weight: 30px;
+    font-size: 70px;
     color: #fff;
+    font-family: 'Abril Fatface', cursive;
+    margin-bottom: -20px;
 }
 
 h2{
     text-align: center;
     font-size: 30px;
-    font-weight: 30px;
+    font-weight: 100px;
     color: #C44536;
+    font-family: 'Raleway', sans-serif;
 }
 
 
@@ -44,7 +46,6 @@ h2{
   border-radius: 30px;
   animation: scroll-background 5s linear infinite;
   position: relative;
-  background: url(../images/background-black.png);
 }
 
 @keyframes scroll-background {
@@ -93,7 +94,7 @@ h2{
   animation: pop-in 1s;
 }
 .congratulations h1{
-    color: white;
+    color: white; 
 }
 
 .congratulations h2{
@@ -103,8 +104,10 @@ h2{
 .btn1 {
     padding: 20px 40px;
     font-size: 20px;
+    font-weight: 100px;
     border-radius: 20px;
     color:  #283D3B;
+    font-family: 'Raleway', sans-serif;
   }
 
 
@@ -127,6 +130,8 @@ h2{
 .btn2 {
   padding: 20px 40px;
   font-size: 20px;
+  font-weight: 100px;
+  font-family: 'Raleway', sans-serif;
   border-radius: 20px;
   color:  #C44536;
 }
