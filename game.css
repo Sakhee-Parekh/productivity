@@ -94,7 +94,8 @@ h2{
   animation: pop-in 1s;
 }
 .congratulations h1{
-    color: white; 
+    color: white;
+    font-size: 20px; 
 }
 
 .congratulations h2{
