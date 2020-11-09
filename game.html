@@ -1,42 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>One Day</title>
-        <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono:ital@0;1&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="game.css" />
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>One Day</title>
+    <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="game.css" />
+</head>
 
-    <body>
-        <h1>Battle it Out!</h1>
-        <div class="section" id="heroBase">
-            <div id="message"></div>
-            <div id="vill-img">
+<body>
+    <div class="wrap">
+        <h1>Defeat the Clouds!</h1>
+        <h2>Use the left and right arrows to move and the spacebar to shoot.</h2>
+        <div class="game-container">
+            <div class="game"></div>
+            <div class="congratulations">
+                <h1>CONGRATS! :)</h1>
+                <h2>You won the game</h2>
+                <button class="btn1" onclick="window.location.reload()">Play Again?</button>
+            </div>
+            <div class="game-over">
+                <h1>GAME OVER</h1>
+                <h2>You lost the game :( </h2>
+                <button class="btn2" onclick="window.location.reload()">Play Again?</button>
             </div>
         </div>
-
-        <div class="game">
-            <h1>Pick Your Characters</h1>
-            <div id="battle-area">
-                <div class="text">
-                    <div id="hero-name"></div>
-                    <div id="hero-stats"></div>
-                    <div id="hero-health"></div>
-                    <div id="enemy-attack"></div>
-                    <div id="enemy-armor"></div>
-
-                    <div id="enemy-name"></div>
-                    <div id="enemy-stats"></div>
-                    <div id="enemy-health"></div>
-                    <div id="enemy-attack"></div>
-                    <div id="enemy-armor"></div>
-                </div>
-            </div>
-
-    <script type="text/javascript" src="./game.js"></script>
-    </body>
-
+    </div>
+    <script src="game.js"></script>
+</body>
 </html>

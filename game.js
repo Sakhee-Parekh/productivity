@@ -1,276 +1,278 @@
-// ---------------------------------------------------------------------------------
-// Character Object & Statistics
-// ---------------------------------------------------------------------------------
+const KEY_CODE_LEFT = 37;
+const KEY_CODE_RIGHT = 39;
+const KEY_CODE_SPACE = 32;
 
-function characterStats(name, hp, ap, apConstant) {
-	this.name = name;				//Name
-	this.hp = hp;					//Health Points
-	this.ap = ap;					//Attack Points [initial] (will be updated every round for hero)
-	this.apConstant = apConstant;	//Attack Point Constant (the number that AP will be increased by every round)
-}
+const GAME_WIDTH = 1600;
+const GAME_HEIGHT = 900;
 
-var Hero = new characterStats(
-	'Hero',
-	'47',
-	'6',
-	'6'
-);
+const PLAYER_WIDTH = 20;
+const PLAYER_MAX_SPEED = 600.0;
+const LASER_MAX_SPEED = 300.0;
+const LASER_COOLDOWN = 0.5;
 
-var Villian = new characterStats(
-	'Villian',
-	'45',
-	'7',
-	'7'
-);
+const ENEMIES_PER_ROW = 10;
+const ENEMY_HORIZONTAL_PADDING = 80;
+const ENEMY_VERTICAL_PADDING = 70;
+const ENEMY_VERTICAL_SPACING = 80;
+const ENEMY_COOLDOWN = 5.0;
 
-// ---------------------------------------------------------------------------------
-// Variables
-// ---------------------------------------------------------------------------------
-
-var hero = "";
-var enemy = "";
-var characters = ['Hero', 'Villian'];
-
-// ---------------------------------------------------------------------------------
-// Functions
-// ---------------------------------------------------------------------------------
-
-//Function to display all characters
-function displayCharacters() {
-	for (var i = 0; i < characters.length; i++) {
-		var chara = characters[i];
-		var html = '<div class="character ' + chara + '"><img class="character-img ' + chara + '" src="images copy/profile/' + chara + '.gif" alt="' + this[chara].name + '" value="' + chara + '"></div>';
-		$('#character-portraits').append(html);
-	}
-}
-
-//Function to pick a hero and enemy
-function pickCharacters() {
-	//When a character image is clicked
-	$('.character-img').on('click', function() {
-
-		//If no character has been chosen yet
-		if (hero === "") {
-			//Update hero variable with character name
-			hero = $(this).attr('value');
-			console.log("Hero: " + window[hero].name);
-
-			//Character portrait fades out and is removed after .5 seconds
-			$('.character .'+hero).attr('class','animated fadeOut character ' + hero);
-			setTimeout(function() {
-				$('.character .'+hero).remove();
-			},500);
-
-			//Update message
-			$('#message').html('<h2>Pick Your Enemy</h2>');
-
-			//Add hero and hero stats to arena
-			$('#arena').append('<img id="hero" src="assets/images/battle/' + hero + '.gif">');
-			$('#hero').attr('class','animated fadeInRight');
-			$('#hero-name').html(window[hero].name);
-			$('#hero-stats').html('100<br><div id="hero-ap">' + window[hero].ap + '</div>0');
-			$('#hero-hp').html(window[hero].hp);
-			$('#hero-name, #hero-stats, #hero-hp').attr('class','animated fadeIn');
-
-			//Remove hero stats animation classes after 1 second
-			setTimeout(function() {
-				$('#hero-name, #hero-stats, #hero-hp').attr('class','');
-			},1000);
-
-			//Remove hero from charactesr array
-			charaIndex = characters.indexOf(hero);
-			characters.splice(charaIndex,1);
-		}
-
-		//If no enemy has been chosen
-		else if (enemy === "") {
-			//Update enemy variable with character name
-			enemy = $(this).attr('value');
-			console.log("Enemy: " + window[enemy].name);
-
-			//Character portrait fades out and is removed after .5 seconds
-			$('.character .' + enemy).attr('class','animated fadeOut character ' + enemy);
-			setTimeout(function() {
-				$('.character .' + enemy).remove();
-			},500);
-
-			//Add enemy and enemy stats to arena
-			$('#arena').append('<img id="enemy" src="images copy/battle/enemy/' + enemy + '.gif">');
-			$('#enemy').attr('class','animated fadeInLeft');
-			$('#enemy-name').html(window[enemy].name);
-			$('#enemy-stats').html('100<br>' + window[enemy].ap + '<br>0');
-			$('#enemy-hp').html(window[enemy].hp);
-			$('#enemy-name, #enemy-stats, #enemy-hp').attr('class','animated fadeIn');
-
-			//Remove enemy stats animation classes after 1 second
-			setTimeout(function() {
-				$('#enemy-name, #enemy-stats, #enemy-hp').attr('class','');
-			},1000);
-
-			//Remove enemy from charactesr array
-			charaIndex = characters.indexOf(enemy);
-			characters.splice(charaIndex,1);
-		}
-	});
-}
-
-//Increase Hero AP every round and update display
-function increaseHeroAP() {
-	window[hero].ap = parseInt(window[hero].ap) + parseInt(window[hero].apConstant);
-	$('#hero-ap').html(window[hero].ap);
-	$('#hero-ap').attr('class','animated rubberBand');
-
-	//Reset herp HP animation classes after 1 second
-	setTimeout(function() {
-		$('#hero-ap').attr('class','');
-	},1000);
-}
-
-//Reduce HP after being attacked
-function decreaseHP(attacker,defender) {
-	window[defender].hp = window[defender].hp - window[attacker].ap;
-}
-
-//Time delays for characters
-function attackTimeout(attacker) {
-	//If 'hide animation' is not checked, return times based on animation gifs
-	if ($('#hide-animation').prop('checked') === false) {
-		if (attacker == "Hero") {
-			return 3000;
-		}
-		else if (attacker == "Villian") {
-			return 3800;
-		}
-	}
-	//Else return .25 seconds
-	else {
-		return 250;
-	}
-}
-
-//End battle function: If hero is defeated, end game. If enemy is defeated, pick another enemy
-//unless everyone is defeated. Parameter must be passed as string.
-function endBattle() {
-	//If hero is defeated
-	if (window[hero].hp <= 0) {
-		//Fade out hero + stats
-		$('#hero').attr('class','animated fadeOutRight');
-		$('#hero-name, #hero-stats, #hero-hp').attr('class','animated fadeOut');
-
-		setTimeout(function() {
-			$('#message').html('<h2 class="red">You Lose!</h2>');
-			$('.arena-area').append('<button type="button" id="reset" class="btn btn-primary" onclick="location.reload()">Play Again?</button>');
-		},1000);
-	}
-
-	//If enemy is defeated
-	else if (window[enemy].hp <= 0) {
-
-		//Fade out enemy
-		$('#enemy').attr('class','animated fadeOutLeft');
-		$('#enemy-name, #enemy-stats, #enemy-hp').attr('class','animated fadeOut');
-
-		//Remove enemy image and reset enemy stats animation classes after 1 second
-		setTimeout(function() {
-			$('#enemy').remove();
-			$('#enemy-name, #enemy-stats, #enemy-hp').attr('class','');
-			$('#enemy-name, #enemy-stats, #enemy-hp').html('');
-
-			//Increase hero AP after .5 seconds
-			setTimeout(function () {
-				//If everyone is defeated
-				if (characters.length === 0) {
-					$('#message').html('<h2 class="green">You Win!</h2>');
-					$('.arena-area').append('<button type="button" id="reset" class="btn btn-primary" onclick="location.reload()">Play Again?</button>');
-				}
-
-				//Reset enemy and choose a new enemy
-				else {
-					enemy = "";
-					pickCharacters();
-				}
-			},500);
-
-		},1000);
-	}
-}
-
-function attack() {
-	$('.arena-area').append('<br><input type="checkbox" id="hide-animation" name="hide-animation" checked> <label for="hide-animation">Hide attack animations</label>');
-	$('.arena-area').append('<br><button type="button" id="attack" class="btn btn-danger">Attack</button>');
-	console.log("Attack button initialized");
-
-	//When Attack button is clicked
-	$('#attack').on('click', function() {
-
-		//If there's no enemy selected
-		if (enemy == "" || window[hero].hp <= 0) {
-			alert("No enemy selected!");
-		}
-
-		//Otherwise run attack animations
-		else {
-			//If 'hide animation' is not checked, run animation gifs
-			if ($('#hide-animation').prop('checked') === false) {
-				$('#hero').attr('src','assets/images/battle/' + hero + '-attack.gif');
-				$('#hero').attr('class','attacker');
-				$('#enemy').attr('class','defender');
-			}
-
-			//Decrease enemy HP
-			decreaseHP(hero,enemy);
-
-			//Enemy attacks after hero finishes attacking
-			setTimeout(function() {
-				//If 'hide animation' is not checked, run animation gifs
-				if ($('#hide-animation').prop('checked') === false) {
-					$('#enemy').attr('src','assets/images/battle/enemy/' + enemy + '-attack.gif');
-					$('#hero').attr('class','defender');
-					$('#enemy').attr('class','attacker');
-				}
-
-				//Decrease hero HP
-				decreaseHP(enemy,hero);
-
-				//Update hero and enemy HPs after enemy finishes attacking
-				setTimeout(function () {
-					if (window[hero].hp <= 0) {
-						$('#hero-hp').html('0');
-					}
-					else {
-						$('#hero-hp').html(window[hero].hp);
-					}
-					$('#hero-hp').attr('class','animated bounce');
-
-					if (window[enemy].hp <= 0) {
-						$('#enemy-hp').html('0');
-					}
-					else {
-						$('#enemy-hp').html(window[enemy].hp);
-					}
-					$('#enemy-hp').attr('class','animated bounce');
-
-					//Rest HP animation classes and increase hero HP after .5 seconds
-					setTimeout(function() {
-						$('#hero-hp').attr('class','');
-						$('#enemy-hp').attr('class','');
-						increaseHeroAP();
-
-						//If either enemy or hero is defeated, end battle
-						if (window[enemy].hp <= 0 || window[hero].hp <= 0) {
-							endBattle();
-						}
-					},1000);
-
-				},attackTimeout(enemy));
-
-			},attackTimeout(hero));
-		}
-	});
-}
-
-window.onload = function() {
-	displayCharacters();
-	pickCharacters();
-	attack();
+const GAME_STATE = {
+  lastTime: Date.now(),
+  leftPressed: false,
+  rightPressed: false,
+  spacePressed: false,
+  playerX: 0,
+  playerY: 0,
+  playerCooldown: 0,
+  lasers: [],
+  enemies: [],
+  enemyLasers: [],
+  gameOver: false
 };
+
+function rectsIntersect(r1, r2) {
+  return !(
+    r2.left > r1.right ||
+    r2.right < r1.left ||
+    r2.top > r1.bottom ||
+    r2.bottom < r1.top
+  );
+}
+
+function setPosition(el, x, y) {
+  el.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+function clamp(v, min, max) {
+  if (v < min) {
+    return min;
+  } else if (v > max) {
+    return max;
+  } else {
+    return v;
+  }
+}
+
+function rand(min, max) {
+  if (min === undefined) min = 0;
+  if (max === undefined) max = 1;
+  return min + Math.random() * (max - min);
+}
+
+function createPlayer($container) {
+  GAME_STATE.playerX = GAME_WIDTH / 2;
+  GAME_STATE.playerY = GAME_HEIGHT - 50;
+  const $player = document.createElement("img");
+  $player.src = "images/player.png";
+  $player.className = "player";
+  $container.appendChild($player);
+  setPosition($player, GAME_STATE.playerX, GAME_STATE.playerY);
+}
+
+function destroyPlayer($container, player) {
+  $container.removeChild(player);
+  GAME_STATE.gameOver = true;
+}
+
+function updatePlayer(dt, $container) {
+  if (GAME_STATE.leftPressed) {
+    GAME_STATE.playerX -= dt * PLAYER_MAX_SPEED;
+  }
+  if (GAME_STATE.rightPressed) {
+    GAME_STATE.playerX += dt * PLAYER_MAX_SPEED;
+  }
+
+  GAME_STATE.playerX = clamp(
+    GAME_STATE.playerX,
+    PLAYER_WIDTH,
+    GAME_WIDTH - PLAYER_WIDTH
+  );
+
+  if (GAME_STATE.spacePressed && GAME_STATE.playerCooldown <= 0) {
+    createLaser($container, GAME_STATE.playerX, GAME_STATE.playerY);
+    GAME_STATE.playerCooldown = LASER_COOLDOWN;
+  }
+  if (GAME_STATE.playerCooldown > 0) {
+    GAME_STATE.playerCooldown -= dt;
+  }
+
+  const player = document.querySelector(".player");
+  setPosition(player, GAME_STATE.playerX, GAME_STATE.playerY);
+}
+
+function createLaser($container, x, y) {
+  const $element = document.createElement("img");
+  $element.src = "images/player-laser.png";
+  $element.className = "laser";
+  $container.appendChild($element);
+  const laser = { x, y, $element };
+  GAME_STATE.lasers.push(laser);
+  setPosition($element, x, y);
+}
+
+function updateLasers(dt, $container) {
+  const lasers = GAME_STATE.lasers;
+  for (let i = 0; i < lasers.length; i++) {
+    const laser = lasers[i];
+    laser.y -= dt * LASER_MAX_SPEED;
+    if (laser.y < 0) {
+      destroyLaser($container, laser);
+    }
+    setPosition(laser.$element, laser.x, laser.y);
+    const r1 = laser.$element.getBoundingClientRect();
+    const enemies = GAME_STATE.enemies;
+    for (let j = 0; j < enemies.length; j++) {
+      const enemy = enemies[j];
+      if (enemy.isDead) continue;
+      const r2 = enemy.$element.getBoundingClientRect();
+      if (rectsIntersect(r1, r2)) {
+        destroyEnemy($container, enemy);
+        destroyLaser($container, laser);
+        break;
+      }
+    }
+  }
+  GAME_STATE.lasers = GAME_STATE.lasers.filter(e => !e.isDead);
+}
+
+function destroyLaser($container, laser) {
+  $container.removeChild(laser.$element);
+  laser.isDead = true;
+}
+
+function createEnemy($container, x, y) {
+  const $element = document.createElement("img");
+  $element.src = "images/enemy.png";
+  $element.className = "enemy";
+  $container.appendChild($element);
+  const enemy = {
+    x,
+    y,
+    cooldown: rand(0.5, ENEMY_COOLDOWN),
+    $element
+  };
+  GAME_STATE.enemies.push(enemy);
+  setPosition($element, x, y);
+}
+
+function updateEnemies(dt, $container) {
+  const dx = Math.sin(GAME_STATE.lastTime / 1000.0) * 50;
+  const dy = Math.cos(GAME_STATE.lastTime / 1000.0) * 10;
+
+  const enemies = GAME_STATE.enemies;
+  for (let i = 0; i < enemies.length; i++) {
+    const enemy = enemies[i];
+    const x = enemy.x + dx;
+    const y = enemy.y + dy;
+    setPosition(enemy.$element, x, y);
+    enemy.cooldown -= dt;
+    if (enemy.cooldown <= 0) {
+      createEnemyLaser($container, x, y);
+      enemy.cooldown = ENEMY_COOLDOWN;
+    }
+  }
+  GAME_STATE.enemies = GAME_STATE.enemies.filter(e => !e.isDead);
+}
+
+function destroyEnemy($container, enemy) {
+  $container.removeChild(enemy.$element);
+  enemy.isDead = true;
+}
+
+function createEnemyLaser($container, x, y) {
+  const $element = document.createElement("img");
+  $element.src = "images/enemy-laser.png";
+  $element.className = "enemy-laser";
+  $container.appendChild($element);
+  const laser = { x, y, $element };
+  GAME_STATE.enemyLasers.push(laser);
+  setPosition($element, x, y);
+}
+
+function updateEnemyLasers(dt, $container) {
+  const lasers = GAME_STATE.enemyLasers;
+  for (let i = 0; i < lasers.length; i++) {
+    const laser = lasers[i];
+    laser.y += dt * LASER_MAX_SPEED;
+    if (laser.y > GAME_HEIGHT) {
+      destroyLaser($container, laser);
+    }
+    setPosition(laser.$element, laser.x, laser.y);
+    const r1 = laser.$element.getBoundingClientRect();
+    const player = document.querySelector(".player");
+    const r2 = player.getBoundingClientRect();
+    if (rectsIntersect(r1, r2)) {
+      destroyPlayer($container, player);
+      break;
+    }
+  }
+  GAME_STATE.enemyLasers = GAME_STATE.enemyLasers.filter(e => !e.isDead);
+}
+
+function init() {
+  const $container = document.querySelector(".game");
+  createPlayer($container);
+
+  const enemySpacing =
+    (GAME_WIDTH - ENEMY_HORIZONTAL_PADDING * 2) / (ENEMIES_PER_ROW - 1);
+  for (let j = 0; j < 3; j++) {
+    const y = ENEMY_VERTICAL_PADDING + j * ENEMY_VERTICAL_SPACING;
+    for (let i = 0; i < ENEMIES_PER_ROW; i++) {
+      const x = i * enemySpacing + ENEMY_HORIZONTAL_PADDING;
+      createEnemy($container, x, y);
+    }
+  }
+}
+
+function playerHasWon() {
+  return GAME_STATE.enemies.length === 0;
+}
+
+function update(e) {
+  const currentTime = Date.now();
+  const dt = (currentTime - GAME_STATE.lastTime) / 1000.0;
+
+  if (GAME_STATE.gameOver) {
+    document.querySelector(".game-over").style.display = "block";
+    return;
+  }
+
+  if (playerHasWon()) {
+    document.querySelector(".congratulations").style.display = "block";
+    return;
+  }
+
+  const $container = document.querySelector(".game");
+  updatePlayer(dt, $container);
+  updateLasers(dt, $container);
+  updateEnemies(dt, $container);
+  updateEnemyLasers(dt, $container);
+
+  GAME_STATE.lastTime = currentTime;
+  window.requestAnimationFrame(update);
+}
+
+function onKeyDown(e) {
+  if (e.keyCode === KEY_CODE_LEFT) {
+    GAME_STATE.leftPressed = true;
+  } else if (e.keyCode === KEY_CODE_RIGHT) {
+    GAME_STATE.rightPressed = true;
+  } else if (e.keyCode === KEY_CODE_SPACE) {
+    GAME_STATE.spacePressed = true;
+  }
+}
+
+function onKeyUp(e) {
+  if (e.keyCode === KEY_CODE_LEFT) {
+    GAME_STATE.leftPressed = false;
+  } else if (e.keyCode === KEY_CODE_RIGHT) {
+    GAME_STATE.rightPressed = false;
+  } else if (e.keyCode === KEY_CODE_SPACE) {
+    GAME_STATE.spacePressed = false;
+  }
+}
+
+init();
+window.addEventListener("keydown", onKeyDown);
+window.addEventListener("keyup", onKeyUp);
+window.requestAnimationFrame(update);
