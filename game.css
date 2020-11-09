@@ -48,15 +48,6 @@ h2{
   position: relative;
 }
 
-@keyframes scroll-background {
-  from {
-    background-position-y: 0px;
-  }
-  to {
-    background-position-y: 256px;
-  }
-}
-
 .game .enemy {
   position: absolute;
   margin-left: -10px;
