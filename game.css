@@ -7,7 +7,7 @@ body {
 body {
   margin: 0;
   font: 16px sans-serif;
-  background: #283D3B;
+   background: #283D3B; 
 }
 
 .wrap {
@@ -36,7 +36,6 @@ h2{
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url(../images/background-black.png);
 }
 
 .game {
@@ -45,6 +44,7 @@ h2{
   border-radius: 30px;
   animation: scroll-background 5s linear infinite;
   position: relative;
+  background: url(../images/background-black.png);
 }
 
 @keyframes scroll-background {
@@ -83,8 +83,9 @@ h2{
 
 .congratulations {
   display: none;
+  top:400px;
   position: absolute;
-  background: #283D3B;
+  background: #C44536;
   color: white;
   padding: 30px 70px;
   border-radius: 30px;
@@ -96,7 +97,7 @@ h2{
 }
 
 .congratulations h2{
-    color: #C44536;
+    color: #283D3B;
 }
 
 .btn1 {
@@ -109,6 +110,7 @@ h2{
 
 .game-over {
   display: none;
+  top:400px;
   position: absolute;
   background: #C44536;
   color: white;

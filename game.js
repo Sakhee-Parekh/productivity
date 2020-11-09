@@ -2,8 +2,8 @@ const KEY_CODE_LEFT = 37;
 const KEY_CODE_RIGHT = 39;
 const KEY_CODE_SPACE = 32;
 
-const GAME_WIDTH = 1600;
-const GAME_HEIGHT = 900;
+const GAME_WIDTH = 1200;
+const GAME_HEIGHT = 700;
 
 const PLAYER_WIDTH = 20;
 const PLAYER_MAX_SPEED = 600.0;
@@ -63,7 +63,7 @@ function createPlayer($container) {
   GAME_STATE.playerX = GAME_WIDTH / 2;
   GAME_STATE.playerY = GAME_HEIGHT - 50;
   const $player = document.createElement("img");
-  $player.src = "images/player.png";
+  $player.src = "images/player1.png";
   $player.className = "player";
   $container.appendChild($player);
   setPosition($player, GAME_STATE.playerX, GAME_STATE.playerY);
